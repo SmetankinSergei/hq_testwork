@@ -1,0 +1,69 @@
+{% load static %}
+{% load site_sections_tags %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="shortcut icon" href="{% static 'img/icon.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/null_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <div class="base-field">
+        <div class="left-bar">
+            <img class="logo" src="{% static 'img/logo.svg' %}">
+            <h1 class="page-title">{{ title|upper }}</h1>
+            <div class="category-name">
+                {% if category_name %}{{ category_name|upper }}{% endif %}
+            </div>
+
+            {% get_site_sections as sections %}
+            {% for section in sections %}
+                {% if section.name == title %}
+                    <div class="current-section">{{ section.name }}</div>
+                {% else %}
+                    <a class="section-button" href="{% url section.url %}">{{ section.name }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="main-field ">
+            <div class="header">
+                <div class="auth-buttons">
+                    <div class="left-side">
+                        {% if user.is_authenticated %}
+                            <p>username: <span class="username">{{ user.username }}</span></p>
+                        {% else %}
+                            <a href="{% url 'users:register' %}">SIGN UP</a>
+                        {% endif %}
+                    </div>
+                    <pre> | </pre>
+                    <div class="right-side">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'users:logout' %}">LOGOUT</a>
+                        {% else %}
+                            <a href="{% url 'users:login' %}">SIGN IN</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% block content %}{% endblock %}
+
+            <div class="footer">
+                <div class="developer-contact">
+                    <a href="https://t.me/elcapitansmetankins" target="_blank">
+                        <img class="logo-telegram" src="{% static 'img/logo-telegram.svg' %}" alt="logo Telegram">
+                    </a>
+                    <a href="https://t.me/elcapitansmetankins" target="_blank">
+                        <div class="developer-contact-text">developer contact</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block style %}
+<link rel="stylesheet" href="{% static 'css/my_courses.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="correction" style="margin-top:5em;"></div>
+    <div class="my-courses">
+        {% if object_list %}
+            {% for course in object_list %}
+                <div class="course">
+                    <div class="main-info">
+                        <div class="course-name">{{ course.name }}</div>
+                        {% if show_lessons == 'show' and course.pk == detailed_course.pk %}
+                            <a href="?show_lessons=hide&course={{course.pk}}"
+                               class="hide-lessons-button show-button">hide lessons</a>
+                        {% else %}
+                            <a href="?show_lessons=show&course={{course.pk}}"
+                               class="show-lessons-button show-button">show lessons</a>
+                        {% endif %}
+                    </div>
+
+                    {% if show_lessons == 'show' and course.pk == detailed_course.pk %}
+                        <div class="lessons">
+                            {% for lesson in detailed_course.lessons.all %}
+                                <div>- {{ lesson.name }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-courses-message">You are not enrolled in any course</div>
+        {% endif %}
+    </div>
+{% endblock %}

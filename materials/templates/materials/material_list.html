@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load materials_tags %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/materials.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="correction" style="margin-top:5em;"></div>
+
+<div class="materials-list">
+    {% get_available_materials as materials %}
+
+    {% if materials %}
+        {% for material in materials %}
+            <div class="material">
+                <div class="material-name">{{ material.name|upper }}</div>
+                <div class="material-info">
+                    <div class="material-author">Author: {{ material.author }}</div>
+                    <div class="material-start">Start: {{ material.start_time }}</div>
+                    <div class="lessons-amount">Lessons amount: {{ material.lessons.all|length }}</div>
+                    <div class="material-price">Price: {{ material.price }}</div>
+                </div>
+
+                <a href="{% url 'materials:course_statistics' material.pk %}" class="stat-button">show course statistics</a>
+                {% if user.is_authenticated %}
+                    {% if material in user.material_users.all %}
+                        <div class="added">added</div>
+                    {% else %}
+                        <a href="{% url 'materials:add_course' material.pk %}" class="buy-button">buy</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-materials-message">No active courses</div>
+    {% endif %}
+</div>
+{% endblock %}

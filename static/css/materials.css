@@ -1,0 +1,66 @@
+.materials-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 98%;
+}
+
+.material {
+    background-color: #666666;
+    width: 32%;
+    border: solid 1px #000;
+    border-radius: 0.5em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.material-name {
+    font-size: 1.5em;
+    border-bottom: solid 1px #000;
+    background-color: #505050;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+.material-info {
+    padding: 1em;
+}
+
+.buy-button, .added, .stat-button {
+    display: block;
+    padding: 1em;
+    text-align: center;
+    color: #bbb7b7;
+    background-color: green;
+    border-top: solid 1px #000;
+    border-radius: 0 0 0.5em 0.5em;
+}
+
+.buy-button:hover {
+    background-color: #5c825c;
+}
+
+.added {
+    background-color: #505050;
+}
+
+.stat-button {
+    border-radius: 0;
+    background-color: #505050;
+}
+
+.stat-button:hover {
+    background-color: #666666;
+}
+
+.no-materials-message {
+    margin: 0 auto;
+    text-align: center;
+    height: 3em;
+    width: 30em;
+    padding: 1em;
+    background-color: #666666;
+    border: solid 1px #000;
+    border-radius: 0.5em;
+}

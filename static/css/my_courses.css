@@ -1,0 +1,53 @@
+.my-courses {
+    margin-inline: 1em;
+}
+
+.course {
+    background-color: #666666;
+    border: solid 1px #000;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-name {
+    font-size: 2em;
+}
+
+.show-button {
+    color: #bbb7b7;
+    display: block;
+    text-align: center;
+    width: 10em;
+    height: 2em;
+    padding: 0.5em;
+    border: solid 1px #000;
+    border-radius: 0.5em;
+    background-color: #252525;
+}
+
+.show-button:hover {
+    background-color: #666666;
+}
+
+.lessons {
+    margin-top: 1em;
+}
+
+.no-courses-message {
+    margin: 0 auto;
+    text-align: center;
+    height: 3em;
+    width: 30em;
+    padding: 1em;
+    background-color: #666666;
+    border: solid 1px #000;
+    border-radius: 0.5em;
+}

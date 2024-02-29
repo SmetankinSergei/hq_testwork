@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/register_done.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="correction" style="margin-top:4em;"></div>
+
+<div class="main-content">
+    <div class="success-message">
+        You have successfully registered
+    </div>
+
+    <div class="auth-link">
+        <div class="link-message">
+            To log in, click on the button
+        </div>
+        <a class="login-button" href="{% url 'users:login' %}">SIGN IN</a>
+    </div>
+</div>
+{% endblock %}
