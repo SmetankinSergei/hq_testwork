@@ -31,12 +31,18 @@ def create_new_group(course):
 
 def get_groups_completeness(course):
     groups_amount = Group.objects.filter(material=course).count()
-    students_amount = course.material_users.all().count()
-    mean_amount = round(students_amount / groups_amount)
-    return round((100 / course.max_students_in_group) * mean_amount)
+    if groups_amount:
+        students_amount = course.material_users.all().count()
+        mean_amount = round(students_amount / groups_amount)
+        return round((100 / course.max_students_in_group) * mean_amount)
+    else:
+        return 0
 
 
 def get_users_percentage(course):
     all_students = User.objects.count()
-    course_students = course.material_users.all().count()
-    return round((100 / all_students) * course_students)
+    if all_students:
+        course_students = course.material_users.all().count()
+        return round((100 / all_students) * course_students)
+    else:
+        return 0
