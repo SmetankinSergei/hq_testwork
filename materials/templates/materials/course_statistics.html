@@ -7,5 +7,17 @@
 {% endblock %}
 
 {% block content %}
+<div class="correction" style="margin:5em;"></div>
 
+<div class="statistics-block">
+    <div class="course-name">{{ course.name|upper }}</div>
+    <div class="statistics">
+        <div class="students-amount">Max students in group: {{ course.max_students_in_group }}</div>
+
+
+        <div class="students-amount">Students amount: {{ course.material_users.all|length }}</div>
+        <div class="students-amount">Groups completeness: {{ groups_completeness }}%</div>
+        <div class="students-amount">Users percentage: {{ users_percentage }}%</div>
+    </div>
+</div>
 {% endblock %}

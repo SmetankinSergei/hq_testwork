@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 from materials.models import Material
-from materials.service import add_user_to_group
+from materials.service import add_user_to_group, get_groups_completeness, get_users_percentage
 
 
 class MaterialsListView(ListView):
@@ -34,6 +34,8 @@ def course_statistics(request, course_pk):
     context = {
         'title': 'course info',
         'course': course,
+        'groups_completeness': get_groups_completeness(course),
+        'users_percentage': get_users_percentage(course),
     }
     return render(request, 'materials/course_statistics.html', context)
 

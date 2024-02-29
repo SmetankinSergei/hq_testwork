@@ -23,13 +23,20 @@
                     <div class="material-price">Price: {{ material.price }}</div>
                 </div>
 
-                <a href="{% url 'materials:course_statistics' material.pk %}" class="stat-button">show course statistics</a>
+
                 {% if user.is_authenticated %}
+                <a href="{% url 'materials:course_statistics' material.pk %}" class="stat-button">
+                    show course statistics
+                </a>
                     {% if material in user.material_users.all %}
                         <div class="added">added</div>
                     {% else %}
                         <a href="{% url 'materials:add_course' material.pk %}" class="buy-button">buy</a>
                     {% endif %}
+                {% else %}
+                <a href="{% url 'materials:course_statistics' material.pk %}" class="stat-button last-button">
+                    show course statistics
+                </a>
                 {% endif %}
             </div>
         {% endfor %}
