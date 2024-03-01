@@ -13,3 +13,6 @@
 <h3>Dependencies</h3>
 
 <p>requirements.txt</p>
+
+<p>Для Вашего удобства присутствует файл для заполнения базы данных data.json. 
+Выполните команду "python manage.py loaddata data.json"</p>
